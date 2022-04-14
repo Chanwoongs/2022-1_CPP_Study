@@ -8,8 +8,15 @@ int main()
 	string bieber("Justin Bieber");
 	string singer;
 
-	cout << "가수 입력 : ";
+	cout << song << "을 부른 가수 입력 : ";
 	getline(cin, singer);
 
-	cout << song << "을 부른 가수는 " << singer;
+	if (singer == bieber)
+	{
+		cout << "맞았습니다." << endl;
+	}
+	else
+	{
+		cout << "아닙니다." << endl;
+	}
 }

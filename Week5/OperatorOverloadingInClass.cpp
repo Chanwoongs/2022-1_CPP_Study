@@ -28,6 +28,25 @@ public:
 		else
 			return false;
 	}
+	// += 복합 대입 연산자
+	Power operator+=(Power a)
+	{
+		this->kick += a.kick;
+		this->punch += a.punch;
+
+		return *this; // this 자기 자신의 포인터
+		// *this -> 자기 자신 즉 객체본인
+	}
+	// + 이항 연산자
+	Power operator+(int a)
+	{
+		Power temp;
+		temp.kick = this->kick + a;
+		temp.punch = this->punch + a;
+
+		return temp;
+	}
+
 	// 전위 ++ 단항 연산자
 	Power operator++() 
 	{
@@ -89,4 +108,17 @@ int main()
 	b = a++; // a.++(임의의 정수)
 	a.show(); // a의 파워는 1 증가
 	b.show(); // b는 a가 증가되기 이전의 상태를 가짐
+
+	Power f(1, 1), g(2, 2);
+
+	cout << endl;
+
+	f += g;
+	f.show();
+	a = f += g;
+	a.show();
+
+	Power h(10, 10);
+	a = h + 5; // h.+(5)
+	a.show();
 }

@@ -14,6 +14,10 @@ public:
 	friend Power operator+(Power op1, Power op2);
 	friend Power operator++(Power& op);
 	friend Power operator++(Power& op, int x);
+	friend bool operator==(Power op1, Power op2);
+	friend bool operator!(Power op1);
+
+
 	void show()
 	{
 		cout << "kick : " << kick << " punch : " << punch << endl;
@@ -40,6 +44,16 @@ Power operator+(Power op1, Power op2)
 
 	return temp;
 }
+// == 비교 연산자
+bool operator==(Power op1, Power op2)
+{
+	if (op1.kick == op2.kick && op1.punch == op2.punch)
+	{
+		return true;
+	}
+	else return false;
+}
+
 // 전위 ++ 단항 연산자
 Power operator++(Power& op)
 {
@@ -58,6 +72,16 @@ Power operator++(Power& op, int x)
 
 	return temp; // 증가 이전의 객체 리턴
 }
+// 전위 ! 단항 연산자
+bool operator!(Power op1)
+{
+	if (op1.kick == 0 && op1.punch == 0)
+	{
+		return true;
+	}
+	return false;
+}
+
 
 int main()
 {
@@ -74,4 +98,16 @@ int main()
 	b = a++; // ++ (a, 0) 0은 의미 없는 값
 	a.show(); // a의 파워는 1 증가
 	b.show(); // b는 a가 증가되기 이전의 상태를 가짐
+
+	Power r, t;
+
+	if (r == t)
+	{
+		cout << "same" << endl;
+	}
+
+	if (!r)
+	{
+		cout << "r is empty" << endl;
+	}
 }
